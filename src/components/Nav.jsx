@@ -57,8 +57,9 @@ const Nav = () => {
                   Profile
                 </Link>
               </li>
-
-              {auth ? (
+            </ul>
+            {auth ? (
+              <ul className="navbar-nav">
                 <li>
                   <Link
                     className="nav-link active"
@@ -69,7 +70,9 @@ const Nav = () => {
                     Logout
                   </Link>
                 </li>
-              ) : (
+              </ul>
+            ) : (
+              <ul className="navbar-nav">
                 <li>
                   <Link
                     className="nav-link active"
@@ -79,8 +82,17 @@ const Nav = () => {
                     SignUp
                   </Link>
                 </li>
-              )}
-            </ul>
+                <li>
+                  <Link
+                    className="nav-link active"
+                    aria-current="page"
+                    to="/login"
+                  >
+                    Login
+                  </Link>
+                </li>
+              </ul>
+            )}
           </div>
         </div>
       </nav>
