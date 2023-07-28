@@ -2,9 +2,10 @@ import { Link, useNavigate } from "react-router-dom";
 import img from "./logo.png";
 
 const Nav = () => {
-  let auth = localStorage.getItem("user");
   const navigate = useNavigate();
-  const handleLogout = () => {
+  let auth = localStorage.getItem("user");
+  // console.log(JSON.parse(auth));
+  const logout = () => {
     localStorage.clear();
     navigate("/signup");
   };
@@ -27,47 +28,50 @@ const Nav = () => {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav">
-              <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to="/">
-                  Products
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to="/add">
-                  Add Product
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link
-                  className="nav-link active"
-                  aria-current="page"
-                  to="/update"
-                >
-                  Update Product
-                </Link>
-              </li>
-
-              <li className="nav-item">
-                <Link
-                  className="nav-link active"
-                  aria-current="page"
-                  to="/profile"
-                >
-                  Profile
-                </Link>
-              </li>
-            </ul>
             {auth ? (
               <ul className="navbar-nav">
+                <li className="nav-item">
+                  <Link className="nav-link active" aria-current="page" to="/">
+                    Products
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    className="nav-link active"
+                    aria-current="page"
+                    to="/add"
+                  >
+                    Add Product
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    className="nav-link active"
+                    aria-current="page"
+                    to="/update"
+                  >
+                    Update Product
+                  </Link>
+                </li>
+
+                <li className="nav-item">
+                  <Link
+                    className="nav-link active"
+                    aria-current="page"
+                    to="/profile"
+                  >
+                    Profile
+                  </Link>
+                </li>
+
                 <li>
                   <Link
                     className="nav-link active"
                     aria-current="page"
                     to="/signup"
-                    onClick={handleLogout}
+                    onClick={logout}
                   >
-                    Logout
+                    Logout ({JSON.parse(auth).name})
                   </Link>
                 </li>
               </ul>
@@ -77,18 +81,19 @@ const Nav = () => {
                   <Link
                     className="nav-link active"
                     aria-current="page"
-                    to="/signup"
+                    to="/login"
                   >
-                    SignUp
+                    Login
                   </Link>
                 </li>
+
                 <li>
                   <Link
                     className="nav-link active"
                     aria-current="page"
-                    to="/login"
+                    to="/signup"
                   >
-                    Login
+                    SignUp
                   </Link>
                 </li>
               </ul>
